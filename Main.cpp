@@ -1,5 +1,5 @@
 #include "Flight.h"
-#include "../Generic/List.h"
+#include "List.h"
 #include <iostream>
 #include <stdlib.h>
 #include <random>
@@ -73,5 +73,6 @@ int main()
         cout << "Aerolinea: " << currentPlane->getAerolinea() << endl;
         cout << "Numero de vuelo: " << currentPlane->getVuelo() << endl;
         cout << "Cantidad de Pasajeros: " << currentPlane->getPasajeros() << endl;
+        cout << "Float: " << currentPlane->getIntTimeValue() << endl;
     }
 }

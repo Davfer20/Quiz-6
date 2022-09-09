@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <cmath>
 
 using namespace std;
 
@@ -18,6 +19,7 @@ class Flight
 {
 
 private:
+    time_t flightTime;
     string aerolinea;
     string numVuelo;
     int cantidadPasajeros;
@@ -36,8 +38,8 @@ public:
 
     void addTime() // Le da la opcion a agregar la hora y minutos exactos para el objeto
     {
-        time_t ttime = time(NULL);
-        tm *local_time = localtime(&ttime);
+        flightTime = time(NULL);
+        tm *local_time = localtime(&flightTime);
         typeid(local_time->tm_hour).name();
         this->hora = local_time->tm_hour;
         this->minutos = local_time->tm_min;
@@ -82,8 +84,11 @@ public:
 
     int getIntTimeValue()
     {
+        time_t now = time(0);
+        struct tm tstruct = *localtime(&now);
 
-        int result = 0;
-        return result;
+        float value = tstruct.tm_hour + tstruct.tm_min / 60.0 + tstruct.tm_sec / 3600.0;
+        int res = round(value);
+        return res;
     }
 };
